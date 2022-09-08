@@ -21,18 +21,17 @@ function onInputSearch(e) {
 }
 
 function onFetchSuccess(data) {
-
+    clearCountriesList()
+    clearCountryInfo()
 
     if (data.length > 10) {
         Notify.info("Too many matches found. Please enter a more specific name.")
     }
     if (data.length >= 2 && data.length <= 10) {
-        clearCountryInfo()
         renderCountryList(data)
     }
 
     if (data.length === 1) {
-        clearCountriesList()
         renderCountryInfo(data)
     }
 
@@ -40,6 +39,7 @@ function onFetchSuccess(data) {
 }
 
 function onFetchError() {
+
     Notify.failure("Oops, there is no country with that name")
 
 }
